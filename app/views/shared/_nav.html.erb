@@ -9,8 +9,9 @@
       <ul>
 
         <!-- ドロップダウンを随時追加 -->
-
-        <li></li>
+          <li class="logout"><a class="dropdown-item" >
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete%></a>
+          </li>
       </ul>
     <!-- サインインされていない場合 -->
     <% else %>

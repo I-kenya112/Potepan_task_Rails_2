@@ -7,7 +7,7 @@
     <!-- サインインされている場合 -->
     <% if user_signed_in? %>
       <ul>
-
+      
         <!-- ドロップダウンを随時追加 -->
           <li class="logout"><a class="dropdown-item" >
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete%></a>

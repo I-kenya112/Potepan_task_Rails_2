@@ -1,5 +1,6 @@
 {
   "name": "reservateapp",
+  "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "@popperjs/core": "^2.11.7",

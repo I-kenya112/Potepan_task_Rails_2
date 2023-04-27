@@ -1,3 +1,89 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.bg-header {
+  height: 80px;
+  background-color: #1c1d3b;
+}
+
+.logo-size {
+  width: 220px;
+  height: auto;
+}
+
+.container-fluid {
+  max-width: 1440px;
+  padding: 0 32px;
+}
+
+.first-view {
+  background-image: url(/assets/homes/cover-lg.jpg);
+  background-size: cover;
+  background-position: 50%;
+  height: 750px;
+  margin-bottom: 180px;
+  padding-top: 80px;
+  width: 100%;
+}
+
+.first-view-title {
+color: #ffffff;
+font-size: 84px;
+line-height: 100px;
+margin-bottom: 48px;
+text-align: center;
+}
+
+.first-view-search {
+  background-color: #ff0000;
+  height: 130px;
+}
+
+.custom-card {
+  position: relative;
+  border: none !important;
+}
+
+.card-img-wrap {
+  height: 455px;
+  overflow: hidden;
+  border-radius: 26px;
+}
+
+.card-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-img-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.custom-card .card-img-overlay {
+  border-radius: 26px;
+  color: #ffffff;
+}
+
+.custom-card .card-title {
+  margin-bottom: 0;
+}
+
+.bg-footer {
+  height: 450px;
+  background-color: #1c1d3b;
+}
+
+.copyright {
+  color: #ffffff;
+}

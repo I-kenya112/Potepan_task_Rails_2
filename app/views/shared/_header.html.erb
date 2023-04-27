@@ -1,0 +1,35 @@
+<!--header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-header">
+  <div class="container-fluid">
+    <a class="navbar-brand me-auto mb-2 mb-lg-0 logo-size" href = "/">
+      <img class="logo-size" src = "/assets/homes/logo.png">
+    </a>
+    <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <!-- サインインされている場合 -->
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <button class="btn btn-secondary navbar-togglee" type="button" data-toggle="collapse" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ドロップダウンボタン
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">施設の新規登録</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">予約済み一覧</a></li>
+            <li><a class="dropdown-item" href="#">登録済み一覧</a></li>
+            <li><a class="dropdown-item" href="#">アカウント設定</a></li>          
+            <li><hr class="dropdown-divider"></li>
+            <li class="logout"><a class="dropdown-item" >
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
+            </li>
+          </ul>
+        </div>
+      <!-- サインインされていない場合 -->
+      <% else %>
+        <div class="user-register">
+            <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+            <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+        </div>
+      <% end %>
+  </div>
+</nav>
+

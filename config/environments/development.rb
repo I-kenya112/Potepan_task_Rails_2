@@ -1,10 +1,6 @@
 require "active_support/core_ext/integer/time"
 
-Rails.application.configure do
-
-  #Active Storageを利用するための設定
-  config.active_storage.service = :local
-
+Rails.application.configure d
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

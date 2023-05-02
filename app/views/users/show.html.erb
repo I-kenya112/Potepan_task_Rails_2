@@ -1,10 +1,6 @@
 <h1><%= @user.name %></h1>
 
-<p>Email: <%= @user.email %></p>
-<p>Icon: 
-  <% if @user.icon.attached? %>
-    <%= image_tag @user.icon, :size => '40x30'%>
-  <%else%>
-    <%= image_tag '/images/profile/default-icon.png' %>
-  <% end %>
-</p>
+<h3>Email: </h3>
+  <%= @user.email %></p>
+<h3>Icon:</h3>
+  <%= @user.icon %>

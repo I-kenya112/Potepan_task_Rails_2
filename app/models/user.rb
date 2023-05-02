@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  has_many :rooms
+
   has_one_attached :icon
 
   def icon
@@ -11,6 +14,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   validates :name, presence: true, length: {maximum: 50}
-
 
 end

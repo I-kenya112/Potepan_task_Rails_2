@@ -7,17 +7,5 @@ Rails.application.routes.draw do
   
   get "users/show" => "users#show"
 
-  # resources :users, only: [:show]
-
-  resources :rooms, except: [:edit] do
-    member do
-      get 'listing'
-      get 'pricing'
-      get 'description'
-      get 'photo_upload'
-      get 'amenities'
-      get 'location'
-    end
-  end
-
+  resources :rooms, except: [:edit] 
 end

@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   
   get "users/show" => "users#show"
 
-  resources :rooms, except: [:edit] 
+  resources :rooms, except: [:edit] do
+    resources :reservations, only: [:create]
+  end
 end

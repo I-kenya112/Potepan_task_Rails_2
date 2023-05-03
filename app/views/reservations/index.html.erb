@@ -1,0 +1,50 @@
+<section class="section">
+  <div class="container">
+    <p class="title">ご予約内容</p>
+    <br/>
+    <table class="table is-fullwidth" style="text-align: center;">
+      <thead>
+        <tr>
+          <!--
+          <th>画像</th>
+          -->
+          <th>施設名</th>
+          <th>紹介文</th>
+          <th>合計料金</th>
+          <th>チェックイン</th>
+          <th>チェックアウト</th>
+          <th>予約確定日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <!-- 
+            <td style="padding-top: 30px;">
+              imageを表示
+            </td>
+            -->
+            <td style="padding-top: 30px;">
+              <%= reservation.room.room_name %>
+            </td>
+            <td style="padding-top: 30px;">
+              <%= reservation.room.room_intro %>
+            </td>
+            <td style="padding-top: 30px;">
+              <%= reservation.reserve_total %>
+            </td>
+            <td style="padding-top: 30px;">
+              <%= reservation.reserve_start %>
+            </td>
+            <td style="padding-top: 30px;">
+              <%= reservation.reserve_end %>
+            </td>
+            <td style="padding-top: 30px;">
+              <%= l reservation.created_at %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

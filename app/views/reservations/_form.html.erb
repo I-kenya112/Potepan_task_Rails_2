@@ -1,8 +1,10 @@
 <h3>施設の予約</h3>
 
-<%= form_for([@room, @room.reservations.new]) do |f| %>
+  <%= form_with model: [@room, @reservations], method: :post , local: true do |f| %>
     <%= f.hidden_field :room_id, value:@room.id %>
     <%= f.hidden_field :user_id, value:current_user.id %>
+    <%= f.hidden_field :reserve_price, value:@room.room_price %>
+
      <table>
         <tr>
           <th><%= f.label :reserve_start, "チェックイン" %></th>

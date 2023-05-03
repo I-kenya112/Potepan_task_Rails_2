@@ -1,0 +1,25 @@
+<%= render "shared/error", obj: @reservation %>
+<div class = "container">
+  <h2>予約フォーム</h2>
+  <h3><%= @room.room_name %></h3>
+
+  <%= form_with model: [@room, @reservation], method: :post, local: true do |f| %>
+    <div>
+      <p><%= f.label :reserve_start , "チェックイン日" %></p>
+      <p><%= f.date_field :reserve_start %></p>
+      <p><%= f.label :reserve_end , "チェックアウト日" %></p>
+      <p><%= f.date_field :reserve_end %></p>
+      <p><%= f.label :reserve_people , "人数" %></p>
+      <p><%= f.number_field :reserve_people ,min: 1 %>名</p>
+    </div>
+    <div>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.hidden_field :reserve_price, value: @room.room_price %>
+      <%= f.hidden_field :room.name %>
+    </div>
+    <div class = "btn">
+      <%= f.submit "予約" %>
+    </div>
+  <% end %>
+</div>

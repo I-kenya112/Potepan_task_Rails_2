@@ -1,35 +1,37 @@
 <%= render "shared/error", obj: @room %>
 
-<div class="row">
-  <div class="col-md-6 offset-md-3">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
 
-    <h3>施設情報の確認</h3>
+      <h3>施設情報の確認</h3>
 
-    <table>
-      <tr>
-        <th>施設名</th>
-        <td><%= @room.room_name %></td>
-      </tr>
-      <tr>
-        <th>施設紹介</th>
-        <td><%= @room.room_intro %></td>
-      </tr>
-      <tr>
-        <th>料金</th>
-        <td><%= @room.room_price %></td>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <td><%= @room.room_address %></td>
-      </tr>
-      <tr>
-        <th>施設画像</th>
-        <td><%= @room.room_image %></td>
-      </tr>
-    </table>
+      <table>
+        <tr>
+          <th>施設名</th>
+          <td><%= @room.room_name %></td>
+        </tr>
+        <tr>
+          <th>施設紹介</th>
+          <td><%= @room.room_intro %></td>
+        </tr>
+        <tr>
+          <th>料金</th>
+          <td><%= @room.room_price %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @room.room_address %></td>
+        </tr>
+        <tr>
+          <th>施設画像</th>
+          <td><%= @room.room_image %></td>
+        </tr>
+      </table>
 
-    <!-- 予約フォームへ -->
-      <%= link_to "予約する" , new_room_reservation_path(room_id: @room.id,user_id: current_user),class:"btn" %>                        
-    
+      <!-- 予約フォームへ -->
+        <%= link_to "予約する" , new_room_reservation_path(room_id: @room.id,user_id: current_user),class:"btn" %>                        
+      
+    </div>
   </div>
 </div>

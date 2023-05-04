@@ -8,4 +8,12 @@ class Room < ApplicationRecord
   validates :room_price, presence: true
   validates :room_address, presence: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[room_name room_address room_intro]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[reservations room_image_attachment room_image_blob user]
+  end
+
 end

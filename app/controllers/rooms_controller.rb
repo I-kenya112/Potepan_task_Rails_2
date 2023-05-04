@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, except: [:index, :new, :create]
+  before_action :set_room, except: [:index, :new, :create, :search]
   before_action :authenticate_user!, except: [:show]
   def index
      @rooms = current_user.rooms.all
@@ -33,7 +33,7 @@ class RoomsController < ApplicationController
   
   def update
     new_params = room_params
-    @rooom = Room.find(params[:id])
+    @room = Room.find(params[:id])
     if @room.update(new_params)
       flash[:notice] = "保存しました。"
       redirect_to rooms_url
@@ -42,6 +42,11 @@ class RoomsController < ApplicationController
       render "edit"
     end
     redirect_back(fallback_location: request.referer)
+  end
+
+  def search
+    @q = Room.ransack(params[:q])
+    @results = @q.result(distinct: true)
   end
   
   private

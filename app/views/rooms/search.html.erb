@@ -1,0 +1,31 @@
+<div class="container">
+  <%= search_form_for @q, url: search_rooms_path, method: :get do |f| %>
+    <%= f.label :room_name_or_room_address_or_room_intro_cont, "検索:" %>
+    <%= f.search_field :room_name_or_room_address_or_room_intro_cont %>
+    <%= f.submit "検索" %>
+  <% end %>
+
+  <h2>検索結果</h2>
+
+  <% if @results.present? %>
+    <h4>検索結果：<%= @results.count %>件</h4>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <% @results.each do |room| %>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title"><%= room.room_name %></h3>
+              <p class="card-text"><%= room.room_address %></p>
+              <p class="card-text"><%= room.room_intro.truncate(30) %></p>
+              <p class="card-text"><%= number_to_currency(room.room_price, unit: "¥", format: "%u%n") %></p>
+              <%= link_to "詳細はこちら", room_path(room), class: "btn btn-warning" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h4>検索結果0件</h4>
+  <% end %>
+
+</div>

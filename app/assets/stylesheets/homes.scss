@@ -36,8 +36,31 @@ text-align: center;
 }
 
 .first-view-search {
-  background-color: #ff0000;
-  height: 130px;
+  background: hsla(0,0%,100%,.4);
+  margin: auto;
+  padding: 32px;
+  width: 704px;
+}
+
+.first-view-search-field {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.first-view-search-btn {
+  width: 100%;
+  background-color: #ff7757;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.suggest-area-title {
+  margin-bottom: 140px;
 }
 
 .custom-card {
@@ -79,11 +102,3 @@ text-align: center;
   margin-bottom: 0;
 }
 
-.bg-footer {
-  height: 450px;
-  background-color: #1c1d3b;
-}
-
-.copyright {
-  color: #ffffff;
-}

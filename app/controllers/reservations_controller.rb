@@ -15,6 +15,9 @@ class ReservationsController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     @reservation = Reservation.new(reservation_params)
+    @reservation.reserve_days = (@reservation.reserve_end - @reservation.reserve_start).to_i
+    @reservation.reserve_total = @reservation.reserve_price * @reservation.reserve_people * @reservation.reserve_days
+
     if current_user == @room.user_id
       flash[:alert] = "オーナーが予約することはできません。"
     else
@@ -22,6 +25,7 @@ class ReservationsController < ApplicationController
         flash[:notice] = "予約が完了しました。"
         redirect_to @room
       else
+        flash.now[:alert] = "予約できませんでした"
         render :index
       end
     end

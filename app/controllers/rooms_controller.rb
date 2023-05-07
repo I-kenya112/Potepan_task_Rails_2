@@ -1,8 +1,8 @@
 class RoomsController < ApplicationController
-  before_action :set_room, except: [:index, :new, :create, :search]
   before_action :authenticate_user!, except: [:show]
+  
   def index
-     @rooms = current_user.rooms.all
+    @rooms = current_user.rooms
   end
 
   def new
@@ -50,11 +50,10 @@ class RoomsController < ApplicationController
   end
   
   private
-    def set_room
-      @room = Room.find(params[:id])
-    end
-    def room_params
-      params.require(:room).permit(:room_name, :room_intro, :room_price, :room_address, :room_image)
-    end
+
+
+  def room_params
+    params.require(:room).permit(:room_name, :room_intro, :room_price, :room_address, :room_image)
+  end
 
 end

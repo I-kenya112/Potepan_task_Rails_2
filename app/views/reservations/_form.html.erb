@@ -1,4 +1,4 @@
-<h3>施設の予約</h3>
+<h2>施設の予約</h2>
 
   <%= form_with model: [@room, @reservations], method: :post , local: true do |f| %>
     <%= f.hidden_field :room_id, value:@room.id %>

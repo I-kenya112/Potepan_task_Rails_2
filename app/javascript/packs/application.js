@@ -10,7 +10,7 @@ import "channels"
 
 // bootstrapを読み込む
 import "bootstrap"
-import "../stylesheets/application"
+import "../stylesheets/application.scss"
 
 Rails.start()
 Turbolinks.start()

@@ -7,19 +7,14 @@ Rails.application.routes.draw do
   
   get "users/show" => 'users#show'
   get 'reservations/index'
-  post 'rooms/:id' => 'rooms#show'
-
+  # post 'rooms/:id' => 'rooms#show'
 
   resources :rooms do
     collection do
       get 'search'
     end
-    resources :reservations
+    resources :reservations, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  post 'rooms/:room_id/reservations' => 'reservations#create'
-  get 'rooms/:room_id/reservations/:id/edit' => 'reservations#edit'
-  delete 'rooms' => 'rooms#destroy'
   resources :users
-
 end

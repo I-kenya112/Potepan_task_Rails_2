@@ -32,11 +32,9 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    @reservation = Reservation.find_by(room_id:params[:room_id], user_id:current_user.id)
-    @room = @reservation.room
+    @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    flash.now[:notice] = "予約を削除しました"
-    redirect_to :reservations
+    redirect_to reservations_path, notice: "予約を削除しました。"
   end
 
   private

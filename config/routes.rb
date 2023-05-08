@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   
   get 'homes/index'
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   get "users/show" => 'users#show'
   get 'reservations/index'
-  # post 'rooms/:id' => 'rooms#show'
+  delete '/reservations/:id', to: 'reservations#destroy', as: 'delete_reservation'
+
 
   resources :rooms do
     collection do

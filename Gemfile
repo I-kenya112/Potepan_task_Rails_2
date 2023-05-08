@@ -63,3 +63,6 @@ gem 'rails-i18n'
 
 #検索機能
 gem 'ransack'
+
+#画像のリサイズ
+gem 'image_processing', '~> 1.2'

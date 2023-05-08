@@ -31,6 +31,8 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
   end
   
+
+
   def update
     new_params = room_params
     @room = Room.find(params[:id])
@@ -41,7 +43,6 @@ class RoomsController < ApplicationController
       flash[:alert] = "問題が発生しました。"
       render "edit"
     end
-    redirect_back(fallback_location: request.referer)
   end
 
   def search

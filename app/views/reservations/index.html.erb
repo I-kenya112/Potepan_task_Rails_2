@@ -1,50 +1,24 @@
-<section class="section">
-  <div class="container">
-    <h2>ご予約内容</h2>
-    <br/>
-    <table class="table is-fullwidth" style="text-align: center;">
-      <thead>
-        <tr>
-          <!--
-          <th>画像</th>
-          -->
-          <th>施設名</th>
-          <th>紹介文</th>
-          <th>合計料金</th>
-          <th>チェックイン</th>
-          <th>チェックアウト</th>
-          <th>予約確定日時</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @reservations.each do |reservation| %>
-          <tr>
-            <!-- 
-            <td style="padding-top: 30px;">
-              imageを表示
-            </td>
-            -->
-            <td style="padding-top: 30px;">
-              <%= reservation.room.room_name %>
-            </td>
-            <td style="padding-top: 30px;">
-              <%= reservation.room.room_intro %>
-            </td>
-            <td style="padding-top: 30px;">
-              <%= reservation.reserve_total %>
-            </td>
-            <td style="padding-top: 30px;">
-              <%= reservation.reserve_start %>
-            </td>
-            <td style="padding-top: 30px;">
-              <%= reservation.reserve_end %>
-            </td>
-            <td style="padding-top: 30px;">
-              <%= l reservation.created_at %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="container">
+  <h2>予約一覧</h2>
+  <div class="row">
+    <% @reservations.each do |reservation| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <% if reservation.room.room_image.attached? %>
+            <%= image_tag reservation.room.room_image.variant(resize: "400x300"), class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "default-image-room.png", class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= reservation.room.room_name %></h5>
+            <p class="card-text">チェックイン: <%= reservation.reserve_start %></p>
+            <p class="card-text">チェックアウト: <%= reservation.reserve_end %></p>
+            <p class="card-text">合計料金: <%= reservation.reserve_total %></p>
+            <p class="card-text">予約確定日時: <%= l reservation.created_at %></p>
+            <%= button_to "削除", delete_reservation_path(reservation.id), method: :delete, data: { confirm: "予約を削除しますか？" }, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-</section>
+</div>

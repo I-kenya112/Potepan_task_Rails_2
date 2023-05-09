@@ -12,7 +12,7 @@
             <% if current_user.icon.attached? %>
               <%= image_tag url_for(@user.icon.variant(resize: "400x400")), class: "img-fluid", style: "width: 40px;" %>
             <% else %>
-              <%= image_tag 'homes/default-icon.png', class: "img-fluid", style: "width: 40px;" %>
+              <%= image_tag 'default-icon.png', class: "img-fluid", style: "width: 40px;" %>
             <% end %>
             <%= current_user.name %>
           </button>

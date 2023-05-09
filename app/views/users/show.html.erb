@@ -12,7 +12,7 @@
           <% if @user.icon.attached? %>
             <%= image_tag url_for(@user.icon.variant(resize: "200x200")), class: "img-fluid" %>
           <% else %>
-            <%= image_tag 'homes/default-icon.png', class: "img-fluid" %>
+            <%= image_tag 'default-icon.png', class: "img-fluid" %>
           <% end %>
         </div>
         

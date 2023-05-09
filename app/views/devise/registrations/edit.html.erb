@@ -1,30 +1,19 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="container">
     <h2>アカウント設定</h2>
     <div class="row">
       <div class="col-md-3">
-        <p>プロフィール画像</p>
-      </div>
-      <div class="col-md-9">
-        <%= form_with(model: current_user, url: user_registration_path, method: :put, local: true, multipart: true) do |form| %>
-          <div class="mb-3">
-            <%= form.file_field :icon, class: "form-control" %>
-          </div>
-          <div class="mb-3">
-            <%= form.submit "保存", class: "btn btn-primary" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-md-3">
         <p>名前</p>
       </div>
       <div class="col-md-9">
         <div class="mb-3">
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+          <%= @user.name %>
         </div>
       </div>
+
       <div class="col-md-3">
         <p>メールアドレス</p>
       </div>
@@ -50,11 +39,11 @@
         </div>
       </div>
       <div class="col-md-3">
-        <p>現在のパスワード（必須）</p>
+        <p>現在のパスワード</p>
       </div>
       <div class="col-md-9">
         <div class="mb-3">
-          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", required: true %>
         </div>
       </div>
       <div class="col-md-12">
@@ -63,13 +52,16 @@
         </div>
       </div>
     </div>
+    <div class="row">
       <div class="col-md-12">
         <h3>アカウントを削除しますか？</h3>
         <div class="mb-3">
-          <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "アカウントを削除しますがよろしいですか？", turbo_confirm: "アカウントを削除しますがよろしいですか？" }, method: :delete, class: "btn btn-danger" %>
+          <%= link_to "アカウントの削除", registration_path(resource_name), data: { confirm: "アカウントを削除しますがよろしいですか？", turbo_confirm: "アカウントを削除しますがよろしいですか？" }, method: :delete, class: "btn btn-danger" %>
+        </div>
+        <div class="mb-3">
+          <%= link_to "戻る", :back, class: "btn btn-secondary" %>
         </div>
       </div>
-      <%= link_to "戻る", :back, class: "btn btn-secondary" %>
     </div>
   </div>
 <% end %>

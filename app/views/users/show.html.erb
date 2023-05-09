@@ -1,6 +1,71 @@
-<h1><%= @user.name %></h1>
-
-<h3>Email: </h3>
-  <%= @user.email %></p>
-<h3>Icon:</h3>
-  <%= @user.icon %>
+<div class="container">
+  <h2><%= @user.name %></h2>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="mb-4">プロフィール</h3>
+      <div class="row">
+        <div class="col-md-3">
+          <p>プロフィール画像</p>
+        </div>
+        <div class="col-md-9">
+          <% if @user.icon.attached? %>
+            <%= image_tag url_for(@user.icon.variant(resize: "200x200")), class: "img-fluid" %>
+          <% else %>
+            <%= image_tag 'homes/default-icon.png', class: "img-fluid" %>
+          <% end %>
+        </div>
+        
+        <div class="col-md-3">
+          <p>名前</p>
+        </div>
+        <div class="col-md-9">
+          <div class="mb-3">
+            <%= @user.name %>
+          </div>
+        </div>
+        
+        <div class="col-md-3">
+          <p>自己紹介</p>
+        </div>
+        <div class="col-md-9">
+          <div class="mb-3">
+            <%= @user.introduction %>
+          </div>
+        </div>
+        
+        <div class="col-md-12 text-end">
+          <%= link_to "プロフィールを編集", profile_user_path(@user), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <h3 class="mb-4">アカウント情報</h3>
+      <div class="row">
+        <div class="col-md-3">
+          <p>メールアドレス</p>
+        </div>
+        <div class="col-md-9">
+          <div class="mb-3">
+            <%= @user.email %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <p>パスワード</p>
+        </div>
+        <div class="col-md-9">
+          <div class="mb-3">
+            *********
+          </div>
+        </div>
+        
+        <div class="col-md-12 text-end">
+          <%= link_to "アカウント情報を編集", edit_user_registration_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr>
+</div>

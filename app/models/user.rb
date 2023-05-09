@@ -4,8 +4,16 @@ class User < ApplicationRecord
 
   has_one_attached :icon
 
-  def icon
-    '/images/profile/default-icon.png'
+  def icon_url
+    if icon.attached?
+      icon.variant(resize: "400x300").processed
+    else
+      default_icon_url
+    end
+  end
+
+  def default_icon_url
+    'default-icon.png'
   end
 
   # Include default devise modules. Others available are:

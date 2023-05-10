@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   get 'reservations/index'
-  delete '/reservations/:id', to: 'reservations#destroy', as: 'delete_reservation'
+  resources :reservations, only: [:index, :destroy]  # 追加
 
   resources :rooms do
     collection do

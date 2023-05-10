@@ -9,32 +9,43 @@ class ReservationsController < ApplicationController
   def new
     @room = Room.find(params[:room_id])
     @user = current_user
-    @reservation = Reservation.new
+    if @room && @user
+      @reservation = Reservation.new
+    else
+      redirect_to root_path, alert: "エラーが発生しました。"
+    end
   end
 
   def create
+    @user = current_user
     @room = Room.find(params[:room_id])
     @reservation = Reservation.new(reservation_params)
-    @reservation.reserve_days = (@reservation.reserve_end - @reservation.reserve_start).to_i
-    @reservation.reserve_total = @reservation.reserve_price * @reservation.reserve_people * @reservation.reserve_days
-
-    if current_user == @room.user_id
-      flash[:alert] = "オーナーが予約することはできません。"
-    else
+  
+    if @reservation.reserve_start.present? && @reservation.reserve_end.present?
+      @reservation.reserve_days = (@reservation.reserve_end - @reservation.reserve_start).to_i
+      @reservation.reserve_total = @reservation.reserve_price * @reservation.reserve_people * @reservation.reserve_days
+  
       if @reservation.save
-        flash[:notice] = "予約が完了しました。"
-        redirect_to @room
+          flash[:notice] = "予約が完了しました。"
+          redirect_to reservations_path
       else
-        flash.now[:alert] = "予約できませんでした"
-        render :index
+          flash.now[:alert] = "予約できませんでした"
+          render :new
       end
+    else
+      flash.now[:alert] = "開始日と終了日を入力してください"
+      render :new
     end
   end
 
   def destroy
     @reservation = Reservation.find(params[:id])
-    @reservation.destroy
-    redirect_to reservations_path, notice: "予約を削除しました。"
+    if @reservation.destroy
+      redirect_to reservations_path, notice: "予約を削除しました。"
+    else
+      flash[:alert] = "問題が発生しました。"
+      render "index"
+    end
   end
 
   private

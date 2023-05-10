@@ -15,7 +15,7 @@
             <p class="card-text">チェックアウト: <%= reservation.reserve_end %></p>
             <p class="card-text">合計料金: <%= reservation.reserve_total %></p>
             <p class="card-text">予約確定日時: <%= l reservation.created_at %></p>
-            <%= button_to "削除", delete_reservation_path(reservation.id), method: :delete, data: { confirm: "予約を削除しますか？" }, class: "btn btn-danger" %>
+            <%= link_to "削除", reservation_path(reservation), method: :delete, data: { confirm: "予約を削除しますか？" }, class: "btn btn-danger" %>
           </div>
         </div>
       </div>

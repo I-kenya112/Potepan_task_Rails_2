@@ -1,10 +1,12 @@
-<div class="container">
-  <%= search_form_for @q, url: search_rooms_path, method: :get do |f| %>
-    <%= f.label :room_name_or_room_address_or_room_intro_cont, "検索:" %>
-    <%= f.search_field :room_name_or_room_address_or_room_intro_cont %>
-    <%= f.submit "検索" %>
-  <% end %>
 
+<div class="search-container">
+  <%= search_form_for @q, url: search_rooms_path, class: "search-field", method: :get do |f| %>
+    <%= f.search_field :room_address_cont, placeholder: 'エリア名を入力', class: "w-285" %>
+    <%= f.search_field :room_name_or_room_intro_cont, placeholder: 'キーワードを入力', class: "w-285" %>
+    <%= f.submit "検索", class: "w-70" %>
+  <% end %>
+</div>
+<div class="container">
   <h2>検索結果</h2>
 
   <% if @results.present? %>

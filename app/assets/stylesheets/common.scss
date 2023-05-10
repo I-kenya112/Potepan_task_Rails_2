@@ -52,3 +52,27 @@ h2 {
   color: #ffffff;
   padding: 5px;
 }
+
+.search-container {
+  height: 125px;
+  background-color: #DFE2E6;
+  display: flex;
+}
+
+.search-field {
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  margin: auto;
+}
+
+.w-285 {
+  width: 285px;
+  height: 45px;
+  padding-left: 45px;
+}
+
+.w-70 {
+  width: 70px;
+  height: 45px;
+}

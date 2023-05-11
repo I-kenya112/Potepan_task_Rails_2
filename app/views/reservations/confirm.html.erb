@@ -1,0 +1,24 @@
+<div class = "container">
+		<h2>予約内容の確認</h2>
+
+		<dt>施設名</dt>
+		<dd><%= @reservation.room.room_name %></dd>
+		<dt>チェックイン日</dt>
+		<dd><%= @reservation.reserve_start %></dd>
+		<dt>チェックアウト日</dt>
+		<dd><%= @reservation.reserve_end %></dd>
+		<dt>人数</dt>
+		<dd><%= @reservation.reserve_people %>名</dd>
+		<dt>支払い金額</dt>
+		<dd>¥<%= @reservation.reserve_total %></dd>
+		
+    <%= form_with model: [@room, @reservation] do |f| %>
+			<%= f.hidden_field :reserve_start %>
+			<%= f.hidden_field :reserve_end %>
+			<%= f.hidden_field :reserve_people %>
+			<%= f.hidden_field :room_id %>
+			<%= f.hidden_field :user_id %>
+      <div class = "btn">
+        <%= f.submit "予約を確定する" %>
+		<% end %>
+</div>

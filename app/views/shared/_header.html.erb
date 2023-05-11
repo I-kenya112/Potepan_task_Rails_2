@@ -1,0 +1,41 @@
+<!--header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-header">
+  <div class="container-fluid">
+    <a class="navbar-brand me-auto mb-2 mb-lg-0 logo-size" href="/">
+      <img class="logo-size" src="/assets/homes/logo.png">
+    </a>
+    <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <!-- サインインされている場合 -->
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <button class="btn btn-secondary navbar-togglee" type="button" data-toggle="collapse" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <% if current_user.icon.attached? %>
+              <%= image_tag url_for(current_user.icon.variant(resize: "400x400")), class: "img-fluid", style: "width: 40px;" %>
+            <% else %>
+              <%= image_tag 'default-icon.png', class: "img-fluid", style: "width: 40px;" %>
+            <% end %>
+            <%= current_user.name %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+            <%= link_to "施設の新規登録", "/rooms/new", class: "dropdown-item" %>
+            <li><hr class="dropdown-divider"></li>
+            <%= link_to "予約済み一覧", "/reservations/index", class: "dropdown-item" %>
+            <%= link_to "登録済み一覧", rooms_path, class: "dropdown-item" %>
+            <%= link_to "アカウント情報", user_path(current_user), class: "dropdown-item" %>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item logout" %>
+            </li>
+          </ul>
+        </div>
+      <!-- サインインされていない場合 -->
+      <% else %>
+        <div class="user-register">
+          <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary me-2' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'post btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</nav>
+

@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      reservation: 予約
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+      reservation:
+        reserve_start: チェックイン日
+        reserve_end: チェックアウト日

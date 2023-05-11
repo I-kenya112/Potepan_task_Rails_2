@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>登録済み施設一覧</h2>
+    </div>
+    <div class="col text-end">
+      <%= link_to "施設の新規登録", [:new_room], class: "btn btn-primary mb-3" %>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">画像</th>
+        <th scope="col">施設名</th>
+        <th scope="col">紹介文</th>
+        <th scope="col">料金</th>
+        <th scope="col">作成日</th>
+        <th scope="col">編集</th>
+        <th scope="col">削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rooms.each do |room| %>
+        <tr>
+          <td>
+            <% if room.room_image.attached? %>
+              <%= image_tag url_for(room.room_image.variant(resize: "200x200")), class: "img-fluid" %>
+            <% else %>
+              <%= image_tag 'default-image-room.png', class: "img-fluid" %>
+            <% end %>
+          </td>
+          <td><%= link_to room.room_name, room %></td>
+          <td><%= room.room_intro %></td>
+          <td><%= room.room_price %></td>
+          <td><%= room.created_at.strftime("%Y-%m-%d") %></td>
+          <td><%= link_to "編集", edit_room_path(room), class: "btn btn-primary btn-sm" %></td>
+          <td><%= link_to "削除", room_path(room), method: :delete, data: { confirm: "施設を削除しますか？" }, class: "btn btn-danger btn-sm", remote: true %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

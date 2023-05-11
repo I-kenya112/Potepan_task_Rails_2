@@ -1,0 +1,76 @@
+<div class="first-view">
+  <h1 class="first-view-title">
+    Potepan Shareで<br>
+    まだ体験したことのない<br>
+    旅をしよう
+  </h1>
+  <!-- 検索機能 -->
+  <div class="container">
+    <div class="first-view-search">
+      <%= search_form_for @q, url: search_rooms_path, method: :get do |f| %>
+        <%= f.search_field :room_address_cont, placeholder: 'エリア名を入力', class:"first-view-search-field" %>
+        <br>
+        <%= f.submit "検索", class:"first-view-search-btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="suggest-area-title">おすすめエリア</h2>
+  <div class="row">
+
+    <div class="col-xl-3 col-md-4 mb-4">
+      <div class="card custom-card border-0">
+        <%= link_to search_rooms_path(q:{room_address_cont: "東京"}) do %>
+          <div class="card-img-overlay d-flex align-items-end">
+            <p class="card-title">東京</p>
+          </div>
+          <div class="card-img-wrap">
+            <%= image_tag("/assets/homes/tokyo.jpg", class: "card-img") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 mb-4">
+      <div class="card custom-card border-0">
+        <%= link_to search_rooms_path(q:{room_address_cont: "大阪"}) do %>
+          <div class="card-img-overlay d-flex align-items-end">
+            <p class="card-title">大阪</p>
+          </div>
+          <div class="card-img-wrap">
+            <%= image_tag("/assets/homes/osaka.jpg", class: "card-img") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 mb-4">
+      <div class="card custom-card border-0">
+        <%= link_to search_rooms_path(q:{room_address_cont: "京都"}) do %>
+          <div class="card-img-overlay d-flex align-items-end">
+            <p class="card-title">京都</p>
+          </div>
+          <div class="card-img-wrap">
+            <%= image_tag("/assets/homes/kyoto.jpg", class: "card-img") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 mb-4">
+      <div class="card custom-card border-0">
+        <%= link_to search_rooms_path(q:{room_address_cont: "札幌"}) do %>
+          <div class="card-img-overlay d-flex align-items-end">
+            <p class="card-title">札幌</p>
+          </div>
+          <div class="card-img-wrap">
+            <%= image_tag("/assets/homes/sapporo.jpg", class: "card-img") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

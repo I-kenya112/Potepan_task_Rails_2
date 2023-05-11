@@ -1,0 +1,49 @@
+<%= render "shared/error", obj: @room %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+
+      <h2>施設情報の確認</h2>
+
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">施設名</th>
+            <td><%= @room.room_name %></td>
+          </tr>
+          <tr>
+            <th scope="row">施設紹介</th>
+            <td><%= @room.room_intro %></td>
+          </tr>
+          <tr>
+            <th scope="row">料金</th>
+            <td><%= @room.room_price %></td>
+          </tr>
+          <tr>
+            <th scope="row">住所</th>
+            <td><%= @room.room_address %></td>
+          </tr>
+          <tr>
+            <th scope="row">施設画像</th>
+            <td>
+              <% if @room.room_image.attached? %>
+                <%= image_tag @room.room_image.variant(resize: "400x300").processed, class: "img-fluid" %>
+              <% else %>
+                <%= image_tag 'default-image-room.png', size: "400x300", class: "img-fluid" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 編集画面へ -->
+      <% if current_user == @room.user %>
+        <%= link_to "編集", edit_room_path(@room), class: "btn btn-primary" %>
+      <!-- 予約フォームへ -->
+      <% else %>    
+        <%= link_to "予約する", new_room_reservation_path(room_id: @room.id, user_id: current_user), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

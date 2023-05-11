@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  room: one
+  reserve_start: 2023-05-02 16:43:52
+  reserve_end: 2023-05-02 16:43:52
+  reserve_price: 
+  reserve_total: 
+
+two:
+  user: two
+  room: two
+  reserve_start: 2023-05-02 16:43:52
+  reserve_end: 2023-05-02 16:43:52
+  reserve_price: 
+  reserve_total: 

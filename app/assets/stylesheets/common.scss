@@ -1,0 +1,79 @@
+html, body,h1, h2, h3, h4,ul, ol, dl, li, dt, dd, p, div, span, img, a, table, tr, th, td, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+article, header, footer, aside, figure, figcaption, nav, section { 
+  display:block;
+}
+body {
+  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+ol, ul {
+  list-style: none;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bg-footer {
+  height: 450px;
+  background-color: #1c1d3b;
+  margin-top: 140px;
+}
+
+.copyright {
+  color: #ffffff;
+}
+
+h2 {
+  margin-bottom: 30px;
+  border-bottom: 3px solid #ff7757;
+  padding-bottom: 3px;
+  display: inline-block;
+}
+
+.logout {
+  color: #000000;
+  text-decoration: none;
+}
+
+.notice {
+  background-color: skyblue;
+  padding: 5px;
+}
+
+.alert {
+  background-color: orangered;
+  color: #ffffff;
+  padding: 5px;
+  margin-bottom: 0;
+}
+
+.search-container {
+  height: 125px;
+  background-color: #DFE2E6;
+  display: flex;
+}
+
+.search-field {
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  margin: auto;
+}
+
+.w-285 {
+  width: 285px;
+  height: 45px;
+  padding-left: 45px;
+}
+
+.w-70 {
+  width: 70px;
+  height: 45px;
+}

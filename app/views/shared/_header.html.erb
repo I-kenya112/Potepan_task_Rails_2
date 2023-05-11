@@ -10,7 +10,7 @@
         <div class="dropdown">
           <button class="btn btn-secondary navbar-togglee" type="button" data-toggle="collapse" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <% if current_user.icon.attached? %>
-              <%= image_tag url_for(@user.icon.variant(resize: "400x400")), class: "img-fluid", style: "width: 40px;" %>
+              <%= image_tag url_for(current_user.icon.variant(resize: "400x400")), class: "img-fluid", style: "width: 40px;" %>
             <% else %>
               <%= image_tag 'default-icon.png', class: "img-fluid", style: "width: 40px;" %>
             <% end %>
